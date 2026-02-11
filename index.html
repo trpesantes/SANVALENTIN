@@ -15,33 +15,28 @@
 /* ===== MOBILE FIX REAL ===== */
 @media (max-width: 768px) {
 
-    /* Quitamos posiciones absolutas en móvil */
+    /* OCULTAMOS gifs flotantes */
     .decor-layer {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .decor {
-        position: relative;
-        width: 90px;
-    }
-
-    /* Ocultamos los gifs laterales en móvil */
-    .left-top,
-    .left-middle,
-    .left-bottom,
-    .right-top,
-    .right-middle,
-    .right-bottom {
         display: none;
     }
 
-    /* Ajuste de la card */
+    /* CONTENEDOR DE GIFS ARRIBA */
+    .mobile-gifs {
+        position: absolute;
+        top: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        z-index: 10;
+    }
+
+    .mobile-gifs img {
+        width: 150px;
+    }
+
+    /* BAJAMOS LA TARJETA */
     .card {
-        margin-top: 10px;
+        margin-top: 150px;
     }
 }
 
@@ -168,11 +163,7 @@ button {
     <img class="decor right-middle" src="https://raw.githubusercontent.com/trpesantes/SANVALENTIN/main/gif5.gif">
     <img class="decor right-bottom" src="https://raw.githubusercontent.com/trpesantes/SANVALENTIN/main/gif7.gif">
 </div>
-<div class="decor-layer mobile-gifs">
-    <img class="decor" src="https://raw.githubusercontent.com/trpesantes/SANVALENTIN/main/gif2.gif">
-    <img class="decor" src="https://raw.githubusercontent.com/trpesantes/SANVALENTIN/main/gif3.gif">
-    <img class="decor" src="https://raw.githubusercontent.com/trpesantes/SANVALENTIN/main/gif7.gif">
-</div>
+
 <!-- TARJETA -->
 <div class="card">
     <h1>💘 ¡MI AMA PRECIOSA! 💘</h1>
