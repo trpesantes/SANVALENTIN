@@ -6,10 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* El botón NO siempre arriba de TODO */
-#noBtn {
-    z-index: 9999;
-}
 
     /* 📱 VERSIÓN CELULAR */
 /* ===== MOBILE FIX REAL ===== */
@@ -217,10 +213,9 @@ noBtn.addEventListener("click", () => {
     /* 🕹️ FASE 1: el NO huye 6 veces */
     if (moveCount < 6) {
         moveCount++;
-        
-        noBtn.style.position = "absolute";
+
+        noBtn.style.position = "fixed";
         noBtn.style.zIndex = "9999";
-        document.body.appendChild(noBtn);
 
         const maxX = window.innerWidth - noBtn.offsetWidth - 20;
         const maxY = window.innerHeight - noBtn.offsetHeight - 20;
