@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>San Valentín 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* GIFS ALREDEDOR */
+.decor-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.decor {
+    position: absolute;
+    width: 260px;
+    height: auto;
+}
+
+/* IZQUIERDA */
+.left-top    { top: 5%; left: 460px; }
+.left-middle { top: 45%; left: 220px; }
+.left-bottom { bottom: 5%; left: 560px; }
+
+/* DERECHA */
+.right-top    { top: 5%; right: 460px; }
+.right-middle { top: 35%; right: 220px; }
+.right-bottom { bottom: 5%; right: 560px; }
+
+/* TARJETA */
+.card {
+    background: white;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 5;
+}
+
+h1 { color: #ff4d6d; margin-bottom: 10px; }
+p { color: #555; margin: 5px 0; }
+
+.heart {
+    font-size: 42px;
+    animation: beat 1.2s infinite;
+    margin: 10px 0;
+}
+
+.details {
+    background: #fff0f3;
+    padding: 12px;
+    border-radius: 12px;
+    color: #b23a48;
+    margin: 10px 0 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+    flex: 1;
+}
+
+#noBtn {
+    background: #ccc;
+    color: #555;
+    flex: 1;
+    position: relative;
+    z-index: 3;
+}
+
+.teddy-text {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ff4d6d;
+}
+
+/* ANIMACIÓN */
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- GIFS ALREDEDOR -->
+<div class="decor-layer">
+    <img class="decor left-top" src="gif2.gif">
+    <img class="decor left-middle" src="gif4.gif">
+    <img class="decor left-bottom" src="gif6.gif">
+
+    <img class="decor right-top" src="gif3.gif">
+    <img class="decor right-middle" src="gif5.gif">
+    <img class="decor right-bottom" src="gif7.gif">
+</div>
+
+<!-- TARJETA -->
+<div class="card">
+    <h1>💘 San Valentín 💘</h1>
+    <p>¿Aceptas esta invitación especial?</p>
+
+    <div class="heart">❤️</div>
+
+    <div class="details">
+        📅 14 de febrero <br>
+        ⏰ 7:00 PM
+    </div>
+
+    <div class="buttons">
+        <button id="yesBtn">Sí 💕</button>
+        <button id="noBtn">No 😶</button>
+    </div>
+
+    <p class="teddy-text">SOY YOOO, SOY TODOS ESTOS OSOOOS 🧸💖</p>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+let moveCount = 0;
+let attempts = 0;
+
+const messages = [
+    "¿Segura?",
+    "¿Segura??",
+    "¿…Segura??",
+    "¿SEGURA???",
+    "¿SEGURÍSIMA???",
+    "💖 DI QUE SÍ 💖"
+];
+
+const originalParent = noBtn.parentElement;
+const originalNext = noBtn.nextSibling;
+
+noBtn.addEventListener("click", () => {
+    if (moveCount < 10) {
+        moveCount++;
+        noBtn.style.position = "absolute";
+        document.body.appendChild(noBtn);
+
+        const maxX = window.innerWidth - noBtn.offsetWidth;
+        const maxY = window.innerHeight - noBtn.offsetHeight;
+
+        noBtn.style.left = `${Math.random() * maxX}px`;
+        noBtn.style.top = `${Math.random() * maxY}px`;
+
+        if (moveCount === 10) {
+            setTimeout(() => {
+                noBtn.style.position = "relative";
+                noBtn.style.left = "0";
+                noBtn.style.top = "0";
+                originalParent.insertBefore(noBtn, originalNext);
+            }, 600);
+        }
+        return;
+    }
+
+    if (attempts < messages.length) {
+        attempts++;
+        yesBtn.textContent = messages[attempts - 1];
+        yesBtn.style.transform = `scale(${1 + attempts * 0.15})`;
+
+        if (attempts === messages.length) {
+            noBtn.style.display = "none";
+            yesBtn.style.flex = "1 1 100%";
+        }
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#ff758c,#ff7eb3);
+            color:white;
+            font-family:'Segoe UI',sans-serif;
+            text-align:center;">
+            <h1 style="color:white;">💖 Sabía que dirías que sí 💖<br><br>
+            Nos vemos pronto 😌</h1>
+            <img src="gif9.gif" style="width:200px;margin-top:20px;">
+        </div>
+    `;
+});
+</script>
+
+</body>
+</html>
 
