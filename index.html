@@ -6,6 +6,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+    /* 📱 VERSIÓN CELULAR */
+@media (max-width: 768px) {
+
+    /* Ajuste general */
+    body {
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
+    /* GIFS más pequeños */
+    .decor {
+        width: 130px;
+    }
+
+    /* Reubicamos TODOS los gifs arriba */
+    .left-top,
+    .right-top {
+        top: 10px;
+    }
+
+    .left-top {
+        left: 10px;
+    }
+
+    .right-top {
+        right: 10px;
+    }
+
+    .left-middle,
+    .right-middle,
+    .left-bottom,
+    .right-bottom {
+        display: none; /* ocultamos exceso */
+    }
+
+    /* La tarjeta baja un poco */
+    .card {
+        margin-top: 140px;
+    }
+
+    /* Texto más compacto */
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}
+
 body {
     margin: 0;
     height: 100vh;
